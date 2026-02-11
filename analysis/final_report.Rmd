@@ -66,9 +66,9 @@ nsim
 library(tidyverse)
 library(knitr)
 
-summary_t    <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel.csv")) %>% mutate(method = "Bootstrap-t")
-summary_pct  <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel_percentile.csv")) %>% mutate(method = "Percentile")
-summary_wald <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel_wald.csv")) %>% mutate(method = "Wald")
+summary_t    <- readRDS(here::here("results/FINAL_SUMMARY_TABLE_parallel.rda")) %>% mutate(method = "Bootstrap-t")
+summary_pct  <- readRDS(here::here("results/FINAL_SUMMARY_TABLE_parallel_percentile.rda")) %>% mutate(method = "Percentile")
+summary_wald <- readRDS(here::here("results/FINAL_SUMMARY_TABLE_parallel_wald.rda")) %>% mutate(method = "Wald")
 
 all_summaries <- bind_rows(summary_t, summary_pct, summary_wald) %>%
   mutate(
@@ -106,11 +106,11 @@ ggplot(all_summaries, aes(x = factor(n), y = runtime_mins, fill = method)) +
        y = "Mean Runtime (mins)") +
   theme_minimal()
 
-file_list <- list.files(here::here("results"), pattern = "results_scen_.*\\_parallel_wald.csv", full.names = TRUE)
+file_list <- list.files(here::here("results"), pattern = "results_scen_.*\\_parallel_wald.rda", full.names = TRUE)
 
 all_raw_data <- file_list %>%
   map_df(~{
-    df <- read.csv(.x)
+    df <- readRDS(.x)
     scen_num <- as.numeric(str_extract(basename(.x), "(?<=scen_)\\d+"))
     df$scenario <- scen_num
     df

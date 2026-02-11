@@ -92,8 +92,8 @@ final_all_scenarios <- foreach(
   scenario_df <- do.call(rbind, results_list)
   scenario_df$scenario <- scenario 
   
-  file_name <- paste0("results_scen_", scenario, "_n", params$n, "_err_", params$error, "_parallel_wald.csv")
-  write.csv(scenario_df, here::here("results", file_name), row.names = FALSE)
+  file_name <- paste0("results_scen_", scenario, "_n", params$n, "_err_", params$error, "_parallel_wald.rda")
+  saveRDS(scenario_df, here::here("results", file_name))
   
   current_aggregate <- aggregate_results(scenario_df)
   current_aggregate$runtime_mins <- time_taken
@@ -105,6 +105,6 @@ final_all_scenarios <- foreach(
 
 stopCluster(cl)
 
-write.csv(final_all_scenarios, here::here("results/FINAL_SUMMARY_TABLE_parallel_wald.csv"), row.names = FALSE)
+saveRDS(final_all_scenarios, here::here("results/FINAL_SUMMARY_TABLE_parallel_wald.rda"))
 
 message("All scenarios finished in parallel.")

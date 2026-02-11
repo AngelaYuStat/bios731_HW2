@@ -5,6 +5,7 @@
 results/*.csv
 results/*.png
 results/*.pdf
+results/*.rda
 source/03_extract_estimates.R
 simulations/run_simulations.R
 analysis/final_report.html
