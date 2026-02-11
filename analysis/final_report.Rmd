@@ -67,7 +67,7 @@ library(tidyverse)
 library(knitr)
 
 summary_t    <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel.csv")) %>% mutate(method = "Bootstrap-t")
-summary_pct  <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel_precentile.csv")) %>% mutate(method = "Percentile")
+summary_pct  <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel_percentile.csv")) %>% mutate(method = "Percentile")
 summary_wald <- read.csv(here::here("results/FINAL_SUMMARY_TABLE_parallel_wald.csv")) %>% mutate(method = "Wald")
 
 all_summaries <- bind_rows(summary_t, summary_pct, summary_wald) %>%

@@ -73,7 +73,7 @@ final_all_scenarios <- foreach(
     )
     
     
-    res_method <- bootstrap_precentile(simdata, "y ~ x")
+    res_method <- bootstrap_percentile(simdata, "y ~ x")
     
     
     results_list[[i]] <- data.frame(
@@ -92,7 +92,7 @@ final_all_scenarios <- foreach(
   scenario_df <- do.call(rbind, results_list)
   scenario_df$scenario <- scenario 
   
-  file_name <- paste0("results_scen_", scenario, "_n", params$n, "_err_", params$error, "_parallel_precentile.csv")
+  file_name <- paste0("results_scen_", scenario, "_n", params$n, "_err_", params$error, "_parallel_percentile.csv")
   write.csv(scenario_df, here::here("results", file_name), row.names = FALSE)
   
   current_aggregate <- aggregate_results(scenario_df)
@@ -105,6 +105,6 @@ final_all_scenarios <- foreach(
 
 stopCluster(cl)
 
-write.csv(final_all_scenarios, here::here("results/FINAL_SUMMARY_TABLE_parallel_precentile.csv"), row.names = FALSE)
+write.csv(final_all_scenarios, here::here("results/FINAL_SUMMARY_TABLE_parallel_percentile.csv"), row.names = FALSE)
 
 message("All scenarios finished in parallel.")

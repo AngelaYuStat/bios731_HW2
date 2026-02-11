@@ -54,7 +54,7 @@ bootstrap_t = function(data, model, B = 500, B_inner = 100, alpha = 0.05){
   return(list(estimate = estimate, se = se, ci_upper = ci_upper, ci_lower = ci_lower))
 }
 
-bootstrap_precentile = function(data, model, B = 500, alpha = 0.05){
+bootstrap_percentile = function(data, model, B = 500, alpha = 0.05){
   # 1. Fit the initial model
   y_vec <- data$y
   x_mat <- model.matrix(as.formula(model), data = data)
@@ -74,7 +74,7 @@ bootstrap_precentile = function(data, model, B = 500, alpha = 0.05){
     estimate_b[i] = fit_b$coefficients[target_col]
   }
   
-  # 3. calculate confidence intervals by precentile method
+  # 3. calculate confidence intervals by percentile method
   ci_lower = quantile(estimate_b, probs = alpha/2, na.rm = TRUE)
   ci_upper = quantile(estimate_b, probs = 1 - alpha/2, na.rm = TRUE)
   
