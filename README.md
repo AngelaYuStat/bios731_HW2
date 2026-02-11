@@ -17,7 +17,7 @@ Stores simulation outputs and analytical plots:
 ### 3. `simulations/` Directory
 Contains the core R scripts for the simulation pipeline:
 * **`run_simulations_parallel_t.R`**: Code for evaluation of **Bootstrap-t**.
-* **`run_simulations_parallel_precentile.R`**: Code for evaluation of **Bootstrap-Percentile**.
+* **`run_simulations_parallel_percentile.R`**: Code for evaluation of **Bootstrap-Percentile**.
 * **`run_simulations_parallel_wald.R`**: Code for evaluation of **Wald**.
 
 ### 4. `analysis/` Directory
