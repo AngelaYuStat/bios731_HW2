@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.csv
+.png
+source/03_extract_estimates.R
+simulations/run_simulations.R
+analysis/final_report.html
+analysis/final_report.pdf
