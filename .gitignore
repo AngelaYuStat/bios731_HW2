@@ -2,9 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
-results/.csv
-results/.png
-results/.pdf
+results/*.csv
+results/*.png
+results/*.pdf
 source/03_extract_estimates.R
 simulations/run_simulations.R
 analysis/final_report.html
